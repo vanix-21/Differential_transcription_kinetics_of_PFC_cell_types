@@ -1,4 +1,4 @@
-# Simulation of transcription based on the two-state model
+# Analysis of burst kinetic differences in fast-spiking and pyramidal cells
 
 Summary
 
