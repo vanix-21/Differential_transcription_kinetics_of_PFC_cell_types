@@ -88,8 +88,8 @@ ggplot(promoters_pivot_longer, aes(y=log2(beta), x=promoter, fill=promoter))+
   ylab(bquote('Burst size (beta) (log2)'))+
   xlab(bquote(''))
 
-anova(lm(promoters_pivot_longer$beta ~promoters_pivot_longer$promoter))
-TukeyHSD(aov(beta ~ promoter, data=promoters_pivot_longer))
+kruskal.test(promoters_pivot_longer$beta ~promoters_pivot_longer$promoter)
+pairwise.wilcox.test(promoters_pivot_longer$beta, promoters_pivot_longer$promoter,p.adjust.method = 'BH' )
 
 
 ##alpha
@@ -105,8 +105,8 @@ ggplot(promoters_pivot_longer, aes(y=log2(alpha), x=promoter, fill=promoter))+
   xlab(bquote(''))
 
 
-anova(lm(promoters_pivot_longer$alpha ~promoters_pivot_longer$promoter))
-TukeyHSD(aov(alpha ~ promoter, data=promoters_pivot_longer))
+kruskal.test(promoters_pivot_longer$alpha ~promoters_pivot_longer$promoter)
+pairwise.wilcox.test(promoters_pivot_longer$alpha, promoters_pivot_longer$promoter,p.adjust.method = 'BH' )
 
 
 
@@ -142,20 +142,20 @@ merged_promoters_bk[is.na(merged_promoters_bk$Group )== FALSE &
   xlab(bquote(''))
 
 
-anova(lm(merged_promoters_bk[is.na(merged_promoters_bk$Group )== FALSE &
+kruskal.test(merged_promoters_bk[is.na(merged_promoters_bk$Group )== FALSE &
                                merged_promoters_bk$Group!='CCAAT-box and TATA' & 
                                merged_promoters_bk!='GC-box and CCAAT-box and TATA','alpha']~
            merged_promoters_bk[is.na(merged_promoters_bk$Group) == FALSE &
                                  merged_promoters_bk$Group!='CCAAT-box and TATA' & 
-                                 merged_promoters_bk!='GC-box and CCAAT-box and TATA','Group'])) ##p= 0.002511
+                                 merged_promoters_bk!='GC-box and CCAAT-box and TATA','Group'])
 
 
-anova(lm(merged_promoters_bk[is.na(merged_promoters_bk$Group )== FALSE &
+kruskal.test(merged_promoters_bk[is.na(merged_promoters_bk$Group )== FALSE &
                                merged_promoters_bk$Group!='CCAAT-box and TATA' & 
                                merged_promoters_bk!='GC-box and CCAAT-box and TATA','beta']~
            merged_promoters_bk[is.na(merged_promoters_bk$Group) == FALSE &
                                  merged_promoters_bk$Group!='CCAAT-box and TATA' & 
-                                 merged_promoters_bk!='GC-box and CCAAT-box and TATA','Group'])) ##0.3905
+                                 merged_promoters_bk!='GC-box and CCAAT-box and TATA','Group'])
 
 
 
