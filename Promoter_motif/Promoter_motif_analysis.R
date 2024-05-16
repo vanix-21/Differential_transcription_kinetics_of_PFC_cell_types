@@ -60,9 +60,9 @@ promoter_col<- c("No motif"="white"       ,
                   "CCAAT-box and TATA"=  "#FFFF99"   )
 
 promoter_col2<- c("No motif"="white"       , 
-                  "Gcbox"=   "#A6CEE3"  ,  
-                  "TATA" = "#CAB2D6" , 
-                  "CCAAT-box"=  "#FFFF99" )
+                  "Gcbox"=   "#357BA7"  ,  
+                  "TATA" = "#A25BA4" , 
+                  "CCAAT-box"=  "#D17A00" )
 
 
 promoters_pivot_longer<- pivot_longer(merged_promoters_bk, cols = c('TATA', 'Gcbox', 'CCAAT.box') , values_to = 'promoter')
@@ -184,9 +184,9 @@ for (i in 1:2){
     if (i==1 ) col= c("AlphalargerinFS"="#66c2a5")
     if (i==2) col= c("BetalargerinPyr"= "#fc8d62")
     
-    if (j==1 ) col =c(col, "All" = "#E78AC3")
-    if (j==2 ) col =c(col, "All" =   "#FFD92F")
-    if (j==3 ) col =c(col, "All" = "#8DA0CB")
+    if (j==1 ) col =c(col, "All" = "#824884")
+    if (j==2 ) col =c(col, "All" =   "#A35F00")
+    if (j==3 ) col =c(col, "All" = "#285E80")
     
     
     ggplot(promoter_oprof[promoter_oprof$genes==subset[i] & promoter_oprof$Motif==motif[j],])+
@@ -246,13 +246,14 @@ for (i in 1:2){
 
 
 
-promoter_col3<- c("GC"=   "#A6CEE3"  ,  
-                  "TATA" = "#CAB2D6" , 
-                  "CCAAT"=  "#FFFF99" )
+promoter_col3<- c("GC"=   "#357BA7"  ,  
+                  "TATA" = "#A25BA4" , 
+                  "CCAAT"=  "#D17A00" )
 
-promoter_col4<- c("GC"=    "#8DA0CB" ,  
-                  "TATA" = "#E78AC3" , 
-                  "CCAAT"=   "#FFD92F" )
+promoter_col4<- c("GC"=    "#285E80" ,  
+                  "TATA" = "#824884" , 
+                  "CCAAT"=   "#A35F00" )
+
 
 promoter_integrate <- read.csv("promoter_integrate.csv", sep=";")
 promoter_integrate$Genes<-factor(promoter_integrate$Genes, levels = c('All', 'Alpha larger in FS', 'Beta larger in Pyr'))
